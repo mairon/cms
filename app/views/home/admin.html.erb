@@ -1,0 +1,33 @@
+<body class="loginpage">
+	<div id="header">
+		<h1>Hotsite Generator - Adminstração - Login</h1>
+	</div>
+	<div id="content" class="loginbox">
+		<%= form_tag :action => "logar" do  %>
+
+			<!--Usuario!-->
+			<p>
+				<label>Usuário:</label>
+				<br />
+				<%= text_field_tag :usuario,nil, :class => 'text' %>
+			</p>
+			<p>
+				<label>Senha:</label>
+				<br />
+				<%= password_field_tag :senha,nil, :class => 'text' %>
+			</p>
+			<p class="formend">
+				<input type="submit" class="submit" id="submit" value="Entrar" />
+			</p>
+			<% end %>
+	</div>
+	
+	<div class="flash_notice">
+		<p align="center">
+			<%= flash[:notice] %></br>
+			 
+			<small> <span class="style3">Powered by</span> 
+			<%= link_to image_tag("/images/logon.png", :size => '85x35'), 'http://cheapdesign.com.br' %>
+			<span class="style3">Version 0.0.1</span> </small>
+	    </p> 
+</body>

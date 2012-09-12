@@ -1,0 +1,85 @@
+<div class="principal">
+<h1>
+<%= link_to @produto.nome, produto_path(@produto.slug) %>
+</h1>	
+  <p id="last_movie">
+	<iframe src="<%= @produto.src_video%>" width="505" height="280" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  </p>
+
+  <p id="redesocial" align="right">
+
+	<div id="google" style="float:left;margin-left:35px;">
+		<g:plusone annotation="none"></g:plusone>	
+	</div>
+
+<!-- Coloque esta chamada de apresentação onde for apropriado -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'pt-BR'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+		<div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="margin-left: 300px;">
+			<a class="addthis_button_preferred_1"></a>
+			<a class="addthis_button_preferred_2"></a>
+			<a class="addthis_button_preferred_3"></a>
+			<a class="addthis_button_preferred_4"></a>
+			<a class="addthis_button_compact"></a>
+			<a class="addthis_counter addthis_bubble_style"></a>
+		</div>
+		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f4d3fbd69808853"></script>
+  </p>
+
+  <p><hr /></p>
+
+  <p id="descricao">
+	<h2 id="descricao">
+  	<%= @produto.descricao.gsub(/\n/, "<br />").html_safe %>
+	</h2>
+  </p>
+
+</div>
+<ul id="all_moves">
+	<% @pd.each do |prod| %>
+		<li id="movie">
+				<a href="/eventos/<%=prod.slug%>">
+				<img width="120" height="80" src="<%= prod.src_imagem %>"/>
+				<div id="cont">
+					<span class="title" ><%= link_to prod.nome, produto_path(prod.slug) %></span>
+					<br />
+					<span class="detalhe" ><%=  truncate( prod.descricao, :length => 25 ) %></span>
+				</div>
+				</a>
+		<hr />
+
+		</li>
+	<% end %>
+	
+	<%= link_to 'Galeria de Eventos', '/gallery' %>
+
+</ul>
+
+	  <script type="text/javascript">
+		  $(function(){
+			  $('#all_moves').slimScroll({
+				  height: '530px',
+				  width: '250px',
+				  start: $('.blah:eq(1)')
+			  });
+			  //no initial content
+			  var somecontent = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam sem, imperdiet at mollis vestibulum, bibendum id purus. Aliquam molestie, leo sed molestie condimentum, massa enim lobortis massa, in vulputate diam lorem quis justo. Nullam nec dignissim mi. In non varius nibh. Proin et eros nisi, eu vulputate libero. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ultricies augue id risus dapibus blandit.</p><p>Integer malesuada molestie dolor sit amet viverra. Mauris nec urna lorem. Integer commodo feugiat ligula eget fermentum. In in tellus a risus convallis pellentesque. Cras non faucibus est. Morbi sagittis risus mollis nisl mollis ac mattis mi volutpat. Vivamus ac rutrum elit. Suspendisse semper orci vitae sapien sollicitudin mattis.</p><p>Integer malesuada molestie dolor sit amet viverra. Mauris nec urna lorem. Integer commodo feugiat ligula eget fermentum. In in tellus a risus convallis pellentesque. Cras non faucibus est. Morbi sagittis risus mollis nisl mollis ac mattis mi volutpat. Vivamus ac rutrum elit. Suspendisse semper orci vitae sapien sollicitudin mattis.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam sem, imperdiet at mollis vestibulum, bibendum id purus. Aliquam molestie, leo sed molestie condimentum, massa enim lobortis massa, in vulputate diam lorem quis justo. Nullam nec dignissim mi. In non varius nibh. Proin et eros nisi, eu vulputate libero. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ultricies augue id risus dapibus blandit.</p><p>Integer malesuada molestie dolor sit amet viverra. Mauris nec urna lorem. Integer commodo feugiat ligula eget fermentum. In in tellus a risus convallis pellentesque. Cras non faucibus est. Morbi sagittis risus mollis nisl mollis ac mattis mi volutpat. Vivamus ac rutrum elit. Suspendisse semper orci vitae sapien sollicitudin mattis.</p><p>Integer malesuada molestie dolor sit amet viverra. Mauris nec urna lorem. Integer commodo feugiat ligula eget fermentum. In in tellus a risus convallis pellentesque. Cras non faucibus est. Morbi sagittis risus mollis nisl mollis ac mattis mi volutpat. Vivamus ac rutrum elit. Suspendisse semper orci vitae sapien sollicitudin mattis.</p>";
+			  $('#noinitialcontent').slimScroll({ 
+				  width: '300px',
+				  alwaysVisible: true
+			  }).html(somecontent);
+			  
+			  //not long enough test
+			  $('#notlongenough').slimScroll({ width:'400px', height:'300px' });
+			  
+		  });
+	  </script>
+

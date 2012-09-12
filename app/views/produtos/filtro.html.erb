@@ -1,0 +1,23 @@
+<div id="icons" align="center">
+	<ul class="lista-imagens" align="center">
+		<% @pd.each do |prod| %>
+			<li>
+				<a href="/eventos/<%=prod.slug%>">
+					<div>
+						<img width="120" height="80" src="<%= prod.src_imagem %>"/>					
+					</div>
+					<div >
+							<span class="title"  valing="top"><%= link_to truncate( prod.nome, :length => 15 ), produto_path(prod.slug) %></span>
+					</div>
+				</a>
+			</li>
+
+		<% end %>
+	</ul>	
+</div>
+
+<div id="paginate">
+  <%= will_paginate @pd, :update => 'pagina', :prev_label => '<< Anterior', :next_label => 'Próximo >>' %>			
+</div>
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Engesilo</title>
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+
+		<%= stylesheet_link_tag 'pages', 'flexslider' %>
+		<%= javascript_include_tag 'jquery-1.7.1.min','rails', 'all','jquery.mousewheel-3.0.4.pack','jquery.flexslider-min' %>
+		<%= csrf_meta_tag %>
+		<link href='http://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
+
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="barra_top"></div>
+
+			<div class="barra_middle">
+				<div class="menu">
+					<ul>
+						<li>
+							<%= link_to image_tag("menu/home.png"), '#about', :id => 'about' %>
+						</li>
+						<li>
+							<%= link_to image_tag("menu/quien_somos.png"), '#quem_somos' %>
+						</li>
+						<li>
+							<%= link_to image_tag("menu/projectos_obras.png"), '#projetos_obras' %>
+						</li>
+						<li>
+							<%= link_to image_tag("menu/tecnologias.png"), '#tecnologias' %>
+						</li>
+						<li>
+							<%= link_to image_tag("menu/contacto.png"), '#contatos' %>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="barra_bottom"></div>
+		</div>
+		
+		<div class="main_resize">
+			<div class="logo">
+				<%= image_tag("logo.png") %> 
+			</div>		
+		      <section class="slider">
+		        <div class="flexslider">
+		          <ul class="slides">
+		            <li>
+		            	<%= image_tag("images/kitchen_adventurer_cheesecake_brownie.jpg", :size => "30x350") %> 
+		  	    		</li>
+		  	    		<li>
+		            	<%= image_tag("images/kitchen_adventurer_cheesecake_brownie.jpg", :size => "30x350") %> 
+		  	    		</li>
+		  	    		<li>
+		            	<%= image_tag("images/kitchen_adventurer_donut.jpg", :size => "30x350") %> 
+		  	    		</li>
+		  	    		<li>
+		            	<%= image_tag("images/kitchen_adventurer_caramel.jpg", :size => "30x350") %> 
+		  	    		</li>
+		          </ul>
+		        </div>
+		      </section>
+			<%= yield %>
+
+		</div>
+		
+		<!--RODAPE!-->
+		<div class="footer">
+			<div class="footer_resize1">
+				<div class="clr">
+				</div>
+			</div>
+
+			<div id="toTop">Top</div>
+		</div>
+	</body>
+</html>

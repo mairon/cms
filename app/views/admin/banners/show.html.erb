@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Produto:</b>
+  <%= @banner.produto_id %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @banner.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @banner.descricao %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @banner.url %>
+</p>
+
+<p>
+  <b>Banner file name:</b>
+  <%= @banner.banner_file_name %>
+</p>
+
+<p>
+  <b>Banner content type:</b>
+  <%= @banner.banner_content_type %>
+</p>
+
+<p>
+  <b>Banner file size:</b>
+  <%= @banner.banner_file_size %>
+</p>
+
+<p>
+  <b>Banner updated at:</b>
+  <%= @banner.banner_updated_at %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @banner.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_banner_path(@banner) %> |
+<%= link_to 'Back', banners_path %>

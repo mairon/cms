@@ -1,0 +1,86 @@
+<%= form_for [:admin, @setting] do |f| %>
+<br/>
+<input type="button" value="  Sair  " class="submit" title="Detalhes Principais" onclick="location.href='/admin/settings'; return false;">
+<%= f.submit :class => "submit", :value => 'Seguir' %>
+
+<br/>
+<br/>
+
+  <% if @setting.errors.any? %>
+    <% @setting.errors.full_messages.each do |msg| %>
+    	<div class="message errormsg"><p><%= msg %></p></div>
+    <% end %>
+  <% end %>
+
+
+	<div class="textbox">
+		<h2>Dados da Página</h2>
+		<span class="toggle">-</span>
+		<div class="textbox_content">
+
+			<p>
+			    <%= f.label :nome_do_projeto %>:<br />
+			    <%= f.text_field :nome, :size => 50, :class=>"text", :placeholder => "Nome unico para o projeto" %>
+				<span class="note">* <span class="required">obrigatório</span></span>
+			</p>
+
+
+			<p>
+			    <%= f.label :Título_da_página %>:<br />
+			    <%= f.text_field :titulo, :size => 80, :class=>"text", :placeholder => "Várias Keywords, títulos longos são melhores.(sugestão : 90 caracteres)" %>
+				<span class="note">*</span>
+			</p>
+
+			<p>
+			    <%= f.label :keyworks %>:<br />
+			    <%= f.text_field :keyworks, :size => 80, :class=>"text", :placeholder => "Escreva cada palavra-chave ou frase separados por uma vírgula. (sugestão : 200 caracteres)" %>
+				<span class="note">*</span>
+			</p>
+
+			<p>
+			    <%= f.label :descrição %>:<br />
+			    <%= f.text_field :keyworks, :size => 80, :class=>"text", :placeholder => "Digite uma breve descrição de seu site. (sugestão : 250 caracteres)" %>
+				<span class="note">*</span>
+			</p>
+
+
+			<p>
+			    <%= f.label :Twitter %>:<br />
+			    <%= f.text_field :url_twitter, :size => 30, :class=>"text", :placeholder => "endereço completo (URL)" %>
+				<span class="note">*</span>
+			</p>
+			<p>
+			    <%= f.label :Facebook %>:<br />
+			    <%= f.text_field :url_facebook, :size => 30, :class=>"text", :placeholder => "endereço completo (URL)" %>
+				<span class="note">*</span>
+			</p>
+			<p>
+			    <%= f.label :Google %>+:<br />
+			    <%= f.text_field :url_google_mais, :size => 30, :class=>"text", :placeholder => "endereço completo (URL)" %>
+				<span class="note">*</span>
+			</p>
+			<p>
+			    <%= f.label :Youtube %>:<br />
+			    <%= f.text_field :url_youtube, :size => 30, :class=>"text", :placeholder => "endereço completo (URL)" %>
+				<span class="note">*</span>
+			</p>
+			<p>
+			    <%= f.label :URL_do_Atendimento %>:<br />
+			    <%= f.text_field :url_atendimento, :size => 30, :class=>"text", :placeholder => "link para o sistema de atendimento on-line" %>
+				<span class="note">*</span>
+			</p>
+
+			<p>
+			    <%= f.label :quem_somos %>:<br />
+			    <%= f.text_area :quem_somos, :cols => 80, :rows => 15, :class=>"text", :placeholder => "Digite uma breve descrição de sua empresa. (sugestão : 250 caracteres)" %>
+				<span class="note">*</span>
+			</p>
+		</div>
+	</div>
+<div class="field">
+
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "submit", :value => 'Seguir' %>
+  </div>
+<% end %>

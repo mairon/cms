@@ -1,0 +1,65 @@
+<div class="textbox_content">
+	<div class="textbox">
+		<%= form_for [:admin, banner], :html => { :multipart => true } do |f| %>
+		<% if banner.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+			<ul>
+				<% banner.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<h2>Novo Banner</h2>
+		<div class="textbox_content">
+			<%= f.hidden_field :produto_id %>
+			<div class="field">
+				<%= f.label :nome %>
+				<br />
+				<%= f.text_field :nome, :size => 30, :class => 'text', :placeholder => "Nome do Banner" %>
+			</div>
+			<div class="field">
+				<%= f.label :descricao %>
+				<br />
+				<%= f.text_field :descricao, :size => 50, :class => 'text', :placeholder => "Descricao breve do Banner" %>
+			</div>
+			<div class="field">
+				<%= f.label :url %>
+				<br />
+				<%= f.text_field :url, :size => 50, :class => 'text', :placeholder => "Direcionar para url" %>
+			</div>
+			<div class="field">
+				<%= f.label :banner %>
+				<br />
+				<span class="custom_file"> <%= f.file_field :banner %> <span class="note" style="clear:both">* Tamanho 920x260</span> </span>
+			</div>
+
+			<div class="field">
+				<%= f.label :tipo %>
+				<br />
+					<%= f.radio_button :tipo,0, :checked => 'checked', :class => 'text' %> Topo
+					<%= f.radio_button :tipo,1, :class => 'text' %> Lateral(Direito)
+			</div>
+
+			<div class="field">
+				<%= f.label :publicidade %>
+				<br />
+				<%= f.check_box :publicidade %>
+			</div>
+
+			
+			<div class="field">
+				<%= f.label :publicar %>
+				<br />
+				<%= f.check_box :status %>
+			</div>
+			<div class="actions">
+				<%= f.submit :class => "submit", :value => 'Adicionar'%>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

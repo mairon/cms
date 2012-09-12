@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <title>contato</title>
+	  <%= javascript_include_tag :defaults %>
+	  <%= yield :head %>
+  </head>
+  <body>
+  <h2>Contato Feito pelo site ARICH</h2>
+  <p>&nbsp;</p>
+  <h3>Nome</h3>
+  <p><%= @parametros[:name] %></p>
+  <p>&nbsp;</p>
+  <h3>E-mail</h3>
+  <p><%= @parametros[:email] %></p>
+  <p>&nbsp;</p>
+  <h3>Telefone</h3>
+  <p><%= @parametros[:phone] %></p>
+  <p>&nbsp;</p>
+  <h3>Mensagem</h3>
+  <p><%= @parametros[:message] %></p>
+  <p>&nbsp;</p>
+  </body>
+</html>

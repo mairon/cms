@@ -1,0 +1,39 @@
+<h1>Listing banners</h1>
+
+<table>
+  <tr>
+    <th>Produto</th>
+    <th>Nome</th>
+    <th>Descricao</th>
+    <th>Url</th>
+    <th>Banner file name</th>
+    <th>Banner content type</th>
+    <th>Banner file size</th>
+    <th>Banner updated at</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @banners.each do |banner| %>
+  <tr>
+    <td><%= banner.produto_id %></td>
+    <td><%= banner.nome %></td>
+    <td><%= banner.descricao %></td>
+    <td><%= banner.url %></td>
+    <td><%= banner.banner_file_name %></td>
+    <td><%= banner.banner_content_type %></td>
+    <td><%= banner.banner_file_size %></td>
+    <td><%= banner.banner_updated_at %></td>
+    <td><%= banner.status %></td>
+    <td><%= link_to 'Show', banner %></td>
+    <td><%= link_to 'Edit', edit_banner_path(banner) %></td>
+    <td><%= link_to 'Destroy', banner, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Banner', new_banner_path %>

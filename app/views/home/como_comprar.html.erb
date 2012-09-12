@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.box").fancybox({
+			'width' : '75%',
+			'height' : '80%',
+			'autoScale' : false,
+			'transitionIn' : 'fade',
+			'transitionOut' : 'fade',
+			'type' : 'iframe'
+		});
+
+	});
+
+</script>
+<!--BANNER!-->
+	<div class="slider_main">
+		<div id="slider">
+			<!-- start slideshow -->
+			<div id="slideshow">
+				<% @banners_topo.each do |bn| %>
+				<div class="slider-item">
+					<a href="<%= bn.url %>" title="<%= bn.nome %>"> <%= image_tag bn.banner.url %> </a>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<!--ITEMS!-->
+
+	<div class="main_left fulllist">
+			<img src="/images/pg_como_comprar.jpg"/>
+			<br/>
+			<br/>
+			<br/>
+
+	</div>				
+
+		</div>				
+	</div>

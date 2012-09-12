@@ -1,0 +1,63 @@
+<div class="textbox_content">
+	<div class="textbox">
+		<%= form_for [:admin, asset], :html => { :multipart => true } do |f| %>
+		<% if asset.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
+			<ul>
+				<% asset.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<%= f.hidden_field :produto_id %> <h2>Novo Produto</h2>
+		<div class="textbox_content">
+			<div class="field">
+				<%= f.label :categoria %>
+				<br />
+				<%= f.collection_select :grupo_id, Grupo.all(:select => 'id,nome',:order => '2'),:id,:nome %>
+			</div>
+			<div class="field">
+				<%= f.label :nome %>
+				<br />
+				<%= f.text_field :nome, :size => 30, :class => 'text', :placeholder => "Nome do Produto" %>
+			</div>
+			<div class="field">
+				<%= f.label :descricao %>
+				<br />
+				<%= f.text_area :descricao, :cols => 80, :rows =>5, :class => 'text' %>
+			</div>
+			<div class="field">
+				<%= f.label :preco %>
+				<br />
+				<%= f.text_field :preco, :size => 30, :class => 'text', :placeholder => "Preco do Produto" %>
+			</div>
+			<div class="field">
+				<%= f.label :url %>
+				<br />
+				<%= f.text_field :url, :size => 30, :class => 'text', :placeholder => "Url..." %>
+			</div>
+			<div class="field">
+				<%= f.label :imagem %>
+				<br />
+				<span class="custom_file"> <%= f.file_field :imagem %> <span class="note" style="clear:both">* Tamanho 168x75</span> </span>
+			</div>
+			<div class="field">
+				<%= f.label :detalhe %>
+				<br />
+				<span class="custom_file"> <%= f.file_field :detalhe %> <span class="note" style="clear:both">* Tamanho 168x75</span> </span>
+			</div>
+			<div class="field">
+				<%= f.label :publicar %>
+				<br />
+				<%= f.check_box :public %>
+			</div>
+			<div class="actions">
+				<%= f.submit :class => 'submit', :value => 'Adicionar' %>
+			</div>
+			<% end %>
+		</div>

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Imagem file name:</b>
+  <%= @asset.imagem_file_name %>
+</p>
+
+<p>
+  <b>Imagem content type:</b>
+  <%= @asset.imagem_content_type %>
+</p>
+
+<p>
+  <b>Imagem file size:</b>
+  <%= @asset.imagem_file_size %>
+</p>
+
+<p>
+  <b>Imagem updated at:</b>
+  <%= @asset.imagem_updated_at %>
+</p>
+
+<p>
+  <b>Preco:</b>
+  <%= @asset.preco %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @asset.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @asset.descricao %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @asset.url %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @asset.public %>
+</p>
+
+
+<%= link_to 'Edit', edit_asset_path(@asset) %> |
+<%= link_to 'Back', assets_path %>

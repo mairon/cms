@@ -1,0 +1,47 @@
+<%= form_for [:admin, @grupo] do |f| %>
+<% if @grupo.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@grupo.errors.count, "error") %> prohibited this grupo from being saved:</h2>
+	<ul>
+		<% @grupo.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="textbox">
+	<h2>Dados da Categori</h2>
+	<span class="toggle">-</span>
+	<div class="textbox_content">
+		<p>
+			<label for="logo">Descricao</label>
+			<br/>
+			<%= f.text_field :nome, :placeholder => "Ex. Categoria dos settings",:size => 60, :class=>"text" %>
+	</div>
+	<p>
+		<label for="logo">Imagem Banner</label>
+		<br/>
+		<span class="custom_file"> <%= f.file_field :banner %> <span class="note" style="clear:both">* Tamanho 590x90</span> </span>
+	</p>
+	<p>
+		<label for="logo">Imagem Menu</label>
+		<br/>
+		<span class="custom_file"> <%= f.file_field :menu %> <span class="note" style="clear:both">* Tamanho 355x50</span> </span>
+	</p>
+
+	<p>
+		<label for="logo">Dimensao</label>
+		<br/>
+		<span class="custom_file">
+		 	<%= f.radio_button :dimensao, 0, :checked => 'checked' %> <span class="note" style="clear:both">* Tamanho 125x275</span>
+		 	<%= f.radio_button :dimensao,1 %> <span class="note" style="clear:both">* Tamanho 125x145</span>
+		</span>
+	</p>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+</div>
+<% end %> 

@@ -1,0 +1,51 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.box").fancybox({
+			'width' : '75%',
+			'height' : '80%',
+			'autoScale' : false,
+			'transitionIn' : 'fade',
+			'transitionOut' : 'fade',
+			'type' : 'iframe'
+		});
+
+	});
+
+</script>
+<!--BANNER!-->
+	<div class="slider_main">
+		<div id="slider">
+			<!-- start slideshow -->
+			<div id="slideshow">
+				<% @banners_topo.each do |bn| %>
+				<div class="slider-item">
+					<a href="<%= bn.url %>" title="<%= bn.nome %>"> <%= image_tag bn.banner.url %> </a>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<!--ITEMS!-->
+
+	<div class="main_left fulllist">
+		<div class="list_category">
+			Likelion made in fronteira, uma marca de camiseta criada em Foz do Iguaçu-PR since 2006. Estampas alternativas com proposta pensante ligada a musica e a arte.
+		</div>				
+
+	</div>				
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+</div>				
+
+	</div>

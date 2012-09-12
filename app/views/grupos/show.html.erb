@@ -1,0 +1,91 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.box").fancybox({
+			'width' : '75%',
+			'height' : '80%',
+			'autoScale' : false,
+			'transitionIn' : 'fade',
+			'transitionOut' : 'fade',
+			'type' : 'iframe'
+		});
+
+	});
+
+</script>
+<!--BANNER!-->
+	<div class="slider_main">
+		<div id="slider">
+			<!-- start slideshow -->
+			<div id="slideshow">
+				<% @banners_topo.each do |bn| %>
+				<div class="slider-item">
+					<a href="#" title="<%= bn.nome %>"> <%= image_tag bn.banner.url %> </a>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<!--ITEMS!-->
+	<div class="main_left fulllist">
+		
+	    <!--ALL GRUPOS!-->
+			<% pd  = Asset.where('public = 1 and grupo_id = ?',@grupo.id).order('id desc, grupo_id') %>
+			<% pd_count  = Asset.count( :id, :conditions => ['public = 1 and grupo_id = ?',@grupo.id ]) %>
+			
+			<div class="clr">
+				<h2><%= @grupo.nome if pd_count.to_i > 0 %></h2>
+			</div>
+			
+			<!--ALL settings!-->
+			<div class="list_category">
+				<ul id="settings">
+					<% pd.each do |as|%>
+						<li class="items">
+							<a class="box" href="/assets/<%= as.id%>">
+								<p class="imagem" style="background:url(<%= as.detalhe.url(:medium) %>) no-repeat scroll center center transparent; background-size:100% 100%;">
+									<%= image_tag as.imagem.url(:medium), :class => "princ" %>
+								</p>
+								<p class="descricao">
+									<%= as.nome %>
+								</p>
+								<p class="preco">
+									R$ <%= number_to_currency(   as.preco, :format =>' %n ', :separeitor => ',') %>
+								</p> 
+							</a>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+			
+	</div>
+	<!--DIV LATERAL DIREITA!-->
+	<div class="main_right" align="center">
+		<div class="news">
+			<img src="/images/barra_like_news.png" width="331" height="53" />
+			Receba com exclusividade em seu email, nossos lançamentos e promoções.
+			<br/>
+			<%= text_field_tag 'teste','' , :placeholder => "Seu E-mail" %>
+			<%= submit_tag "Ok"%>
+		</div>
+		<hr />
+		<div align="center">
+			<div id="icons" align="center">
+				<br />
+				<ul class="lista-imagens">
+					<% @grupos.each do |gp| %>
+					<li class="lista-categorias">
+						<%= link_to image_tag(gp.menu.url(:large)), grupo_path(gp.slug) %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<% @banners_direita.each do |bd| %>
+				<li>
+					<%= link_to image_tag(bd.banner(:direito)), bd.url %>
+				</li>
+			<% end %>			
+		</div>
+		<div class="clr"></div>
+	</div>

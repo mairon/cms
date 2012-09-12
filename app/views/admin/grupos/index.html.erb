@@ -1,0 +1,33 @@
+<h1> Grupos</h1>
+
+<%= link_to 'Nuevo', new_admin_grupo_path %>
+
+<table>
+  <tr>
+    <th align="left">Cod.</th>
+    <th align="left">Descricao</th>
+    <th align="left">Banner</th>
+    <th align="left">Banner Menu</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @grupos.each do |grupo| %>
+  <tr>
+  <tr>
+    <td width="10"><%= grupo.id %></td>
+    <td width="300" align="left"><%= grupo.nome %></td>
+	<td width="250"><%= image_tag grupo.banner.url(:small) %></td>
+	<td width="250"><%= image_tag grupo.menu.url(:small) %></td>
+    <td><%= link_to image_tag("/images/edit.png"), edit_admin_grupo_path(grupo) %></td>
+	<td><%= link_to image_tag("/images/close.png"), [:admin, grupo], :method => :delete, :confirm => 'Esta seguro disso?' %></td>
+  </tr>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

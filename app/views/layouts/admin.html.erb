@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cheap</title>
+  <%= stylesheet_link_tag 'admin' %>
+  <%= javascript_include_tag 'jquery-1.7.1.min','rails', 'admin/global' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+	<div id="header">
+		<h1><a href="#">Administração</a></h1>
+		<div class="userprofile" style="background:none; padding-right:0">
+			<ul>
+				
+				<li>
+						<% if user_signed_in? %>						
+						Logado com <%= current_user.email %> |	
+						<%= link_to "Visitar meu Site", root_path %>					
+						<%= link_to image_tag("admin/logout.png")<<"Sair", destroy_user_session_path ,:method => :delete %>					
+						<% else %>
+						<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+						<% end %>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="sidebar">
+			<input type="hidden" id="__controller_name" value="pagina" />
+		<ul id="nav">
+			<li>
+
+				<a href="/admin/settings">
+					<div><%= image_tag("admin/nav/settings.png") %> Settings</div>
+				</a>
+			</li>
+			
+			<li>
+				<a href="/admin/grupos">
+					<div><%= image_tag("admin/nav/users.png") %>Categorias</div>
+				</a>
+			</li>			
+
+
+			<li>
+				<a href="/admin/usuarios">
+					<div><%= image_tag("admin/nav/pages.png") %>Usuários</div>
+				</a>
+			</li>			
+		</ul>
+	</div>	
+</div>
+<div id="content">
+	<%= notice %>
+		
+    <%= yield %>
+</div>
+	
+
+
+</body>
+</html>

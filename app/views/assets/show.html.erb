@@ -1,0 +1,66 @@
+<script>
+	$(function() {
+		$('#products').slides({
+			preload : true,
+			preloadImage : 'img/loading.gif',
+			effect : 'slide, fade',
+			crossfade : true,
+			slideSpeed : 350,
+			fadeSpeed : 500,
+			generateNextPrev : true,
+			generatePagination : false
+		});
+	});
+
+</script>
+<!--PRODUTO!-->
+<body>
+	<div id="container">
+		<div id="products_example">
+			<div id="products">
+				<div class="slides_container">
+					<a href="#" target="_blank"><%= image_tag @asset.imagem.url(:large) %>"</a>
+					<a href="#" target="_blank"><%= image_tag @asset.detalhe.url(:large) %>"</a>
+				</div>
+				<div class="titulo">
+					<h1><%= @asset.nome %></h1>
+					
+					<div class="pagination addthis_toolbox addthis_default_style">
+						<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+						<a class="addthis_button_tweet"></a>
+						<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+					</div>
+
+					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f3088ea0b819c23"></script>
+					
+				</div>
+				<div class="pagination">
+					<ul>
+						<li>
+							<a href="#"><%= image_tag @asset.imagem.url(:small) %>"</a>
+						</li>
+						<li>
+							<a href="#"><%= image_tag @asset.detalhe.url(:small) %>"</a>
+						</li>
+					</ul>
+					<div class="preco">
+						<hr />
+						<b>
+						  R$ <%= number_to_currency( @asset.preco, :format =>' %n ', :separeitor => ',') %>
+						</b>
+					</div>
+				</div>
+				<ul class="descricao">
+					<li>Descricao : <%= @asset.descricao %></li>
+					<li>
+						
+					</li>
+					<li>
+						<a class="bt" href="#" onclick="window.open('<%=@asset.url%>', 'Pagina')">Comprar</a>					
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
