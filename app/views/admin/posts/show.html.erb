@@ -1,0 +1,34 @@
+
+<h2>
+  <%= @post.nome %>
+</h2>
+<script>
+$(function() {
+  $("#assets th a, #assets .pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#assets_search input").keyup(function() {
+    $.get($("#assets_search").attr("action"), $("#assets_search").serialize(), null, "script");
+    return false;
+  });
+});	
+	
+</script>
+
+<form>	
+	<p>
+		<input type="button" value="Voltar" class="submit" title="Post" onclick="location.href='/admin/posts/<%= @post.id%>/edit'; return false;">
+		<input type="button" value="Sair" class="submit" title="Sair" onclick="location.href='/admin/posts'; return false;">
+	</p>
+</form>
+<div class="textbox">
+	<h2>Imagens</h2>
+	<span class="toggle">-</span>
+
+	<div class="textbox_content">
+		<%= render :partial => '/admin/assets/index_assets' %>
+	</div>
+
+	<%= render :partial=>"admin/assets/new_asset", :locals=>{:asset=>Asset.new(:post_id=>@post.id)} %>
+</div>

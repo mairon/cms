@@ -12,32 +12,12 @@ Engesilo::Application.routes.draw do
     resources :settings
     resources :banners
     resources :assets
+    resources :posts
   end
-  
-    match '/admin/assets/preview_detalhe_produto/:id' => 'admin/assets#preview_detalhe_produto'
-    match '/admin/assets/gera_detalhe_produto/:id'    => 'admin/assets#gera_detalhe_produto'
 
-    match '/admin/settings/preview/:id'    => 'admin/settings#preview'
-    match '/admin/settings/gera_index/:id' => 'admin/settings#gera_index'
-    match '/admin/settings/gerar_index/:id'=> 'admin/settings#gerar_index'
-    match '/admin/settings/assets/:id'     => 'admin/settings#assets'
- 
-    resources :assets
-    resources :grupos
-
-    resources :settings, :path => 'eventos' do
-       get 'filtro', :on => :collection
-    end  
-  
-   match '/eventos' => 'home#eventos'
-
-   match "contato" => "home#contato"
-   match "como_comprar" => "home#como_comprar"
-   match "quem_somos" => "home#quem_somos"
-   match "send_mail" => "home#send_mail"
-
-   match '/logar' => 'home#logar'
-   post "/send_mail", :action => "send_mail", :controller => "home"
+  resources :assets
+  resources :grupos
+  resources :posts
 
    match '/logout'            => 'home#destroy'
 

@@ -1,8 +1,8 @@
 
 <div class="textbox">
-	<h2>Lista de settings - Public(<%= Asset.count(:conditions => ["public = 1"])%>) No public(<%= Asset.count(:conditions => ["public = 0"])%>)
-		
-			<%= form_tag "/admin/settings/assets/#{@produto.id}", :method => 'get', :id => "assets_search" do %>
+	<h2>Lista de Imagens - Public(<%= Asset.count(:conditions => ["public = 1"])%>) No public(<%= Asset.count(:conditions => ["public = 0"])%>)
+	
+			<%= form_tag "/admin/posts/#{@post.id}", :method => 'get', :id => "assets_search" do %>
 		<p>
 			<%= text_field_tag :search, params[:search], :class => 'text' %>
 			<%= submit_tag "Search", :name => nil,:class=>"submit" %>
@@ -14,12 +14,9 @@
 	<table width="100%" cellspacing="0" cellpadding="0" class="sortable">
 		<thead>
 			<tr>
-				<th width="10" class="header" style="cursor: pointer;">Img Princ.</th>
-				<th width="10" class="header" style="cursor: pointer;">Img Det.</th>
+				<th width="10" class="header" style="cursor: pointer;">Img</th>
 				<th width="10" class="header" style="cursor: pointer;">Public</th>
-				<th width="10" class="header" style="cursor: pointer;">Categ.</th>
 				<th width="100" class="header" style="cursor: pointer;">Titulo</th>
-				<th width="90" class="header" style="cursor: pointer;">Preco</th>
 				<th width="200" class="header" style="cursor: pointer;">Desc.</th>
 				<th width="100" class="header" style="cursor: pointer;">Url</th>
 				<th></th>
@@ -32,16 +29,13 @@
 				<% @assets.each do |as| %>
 				<tr>
 					<td width="10" ><%= image_tag as.imagem.url(:small), :style => "border:2px solid #999" %></td>
-					<td width="10" ><%= image_tag as.detalhe.url(:small), :style => "border:2px solid #999" %></td>
 					<td width="10"><%= as.public %></td>
-					<td width="10"><%= as.grupo_id %></td>
 					<td width="100"><%= as.nome %></td>
-					<td width="90" align="right"><%= as.preco %></td>
 					<td width="200"><%= truncate( as.descricao, :length => 25 ) %></td>
 					<td width="100"><%= truncate( as.url, :length => 25 ) %></td>
-					<td width="20"><%= link_to image_tag("/images/nav/media.png"), "/admin/assets/preview_detalhe_produto/#{as.id}" %></td>
-					<td width="20"><%= link_to image_tag("/images/edit.png"), edit_admin_asset_path(as) %></td>
-					<td width="20"><%= link_to image_tag("/images/close.png"), [:admin, as], :method => :delete, :confirm => 'Esta seguro disso?' %></td>
+					<td width="20"><%= link_to image_tag("admin/nav/media.png"), "/admin/assets/preview_detalhe_produto/#{as.id}" %></td>
+					<td width="20"><%= link_to image_tag("admin/edit.png"), edit_admin_asset_path(as) %></td>
+					<td width="20"><%= link_to image_tag("admin/close.png"), [:admin, as], :method => :delete, :confirm => 'Esta seguro disso?' %></td>
 				</tr>
 				<% end %>
 			</tbody>

@@ -2,8 +2,6 @@ class Admin::BannersController < Admin::AdminController
   
   before_filter :authenticate_user!
   
-  # GET /banners
-  # GET /banners.xml
   def index
     @banners = Banner.all
 
@@ -13,19 +11,6 @@ class Admin::BannersController < Admin::AdminController
     end
   end
 
-  # GET /banners/1
-  # GET /banners/1.xml
-  def show
-    @banner = Banner.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @banner }
-    end
-  end
-
-  # GET /banners/new
-  # GET /banners/new.xml
   def new
     @banner = Banner.new
 
@@ -35,19 +20,16 @@ class Admin::BannersController < Admin::AdminController
     end
   end
 
-  # GET /banners/1/edit
   def edit
     @banner = Banner.find(params[:id])
   end
 
-  # POST /banners
-  # POST /banners.xml
   def create
     @banner = Banner.new(params[:banner])
 
     respond_to do |format|
       if @banner.save
-        format.html { redirect_to("/admin/settings/#{@banner.produto_id}", :notice => 'Banner was successfully created.') }
+        format.html { redirect_to(admin_banners_url, :notice => 'Banner Gravado com Sucesso') }
         format.xml  { render :xml => @banner, :status => :created, :location => @banner }
       else
         format.html { render :action => "new" }
@@ -63,7 +45,7 @@ class Admin::BannersController < Admin::AdminController
 
     respond_to do |format|
       if @banner.update_attributes(params[:banner])
-        format.html { redirect_to("/admin/settings/#{@banner.produto_id}", :notice => 'Banner was successfully created.') }
+        format.html { redirect_to(admin_banners_url, :notice => 'Banner Atualizado com Sucesso') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,7 +61,7 @@ class Admin::BannersController < Admin::AdminController
     @banner.destroy
 
     respond_to do |format|
-      format.html { redirect_to("/admin/settings/#{@banner.produto_id}", :notice => 'Banner was successfully created.') }
+      format.html { redirect_to(admin_banners_url, :notice => 'Banner Deletado com Sucesso') }
       format.xml  { head :ok }
     end
   end

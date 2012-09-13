@@ -14,15 +14,10 @@
 		</div>
 		<% end %>
 
-		<%= f.hidden_field :produto_id %> <h2>Novo Produto</h2>
+		<%= f.hidden_field :post_id %> <h2>Nova Imagem</h2>
 		<div class="textbox_content">
 			<div class="field">
-				<%= f.label :categoria %>
-				<br />
-				<%= f.collection_select :grupo_id, Grupo.all(:select => 'id,nome',:order => '2'),:id,:nome %>
-			</div>
-			<div class="field">
-				<%= f.label :nome %>
+				<%= f.label :titulo %>
 				<br />
 				<%= f.text_field :nome, :size => 30, :class => 'text', :placeholder => "Nome do Produto" %>
 			</div>
@@ -30,11 +25,6 @@
 				<%= f.label :descricao %>
 				<br />
 				<%= f.text_area :descricao, :cols => 80, :rows =>5, :class => 'text' %>
-			</div>
-			<div class="field">
-				<%= f.label :preco %>
-				<br />
-				<%= f.text_field :preco, :size => 30, :class => 'text', :placeholder => "Preco do Produto" %>
 			</div>
 			<div class="field">
 				<%= f.label :url %>
@@ -45,11 +35,6 @@
 				<%= f.label :imagem %>
 				<br />
 				<span class="custom_file"> <%= f.file_field :imagem %> <span class="note" style="clear:both">* Tamanho 168x75</span> </span>
-			</div>
-			<div class="field">
-				<%= f.label :detalhe %>
-				<br />
-				<span class="custom_file"> <%= f.file_field :detalhe %> <span class="note" style="clear:both">* Tamanho 168x75</span> </span>
 			</div>
 			<div class="field">
 				<%= f.label :publicar %>

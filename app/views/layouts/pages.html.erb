@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Engesilo</title>
+		<title><%= @settings.titulo %></title>
 		<link rel="shortcut icon" href="/images/favicon.ico" />
 
 		<%= stylesheet_link_tag 'pages', 'flexslider' %>
@@ -46,18 +46,9 @@
 		      <section class="slider">
 		        <div class="flexslider">
 		          <ul class="slides">
-		            <li>
-		            	<%= image_tag("images/kitchen_adventurer_cheesecake_brownie.jpg", :size => "30x350") %> 
-		  	    		</li>
-		  	    		<li>
-		            	<%= image_tag("images/kitchen_adventurer_cheesecake_brownie.jpg", :size => "30x350") %> 
-		  	    		</li>
-		  	    		<li>
-		            	<%= image_tag("images/kitchen_adventurer_donut.jpg", :size => "30x350") %> 
-		  	    		</li>
-		  	    		<li>
-		            	<%= image_tag("images/kitchen_adventurer_caramel.jpg", :size => "30x350") %> 
-		  	    		</li>
+		          	<% @banners_topo.each do |bp|%>
+		          	    <li><%= image_tag bp.banner.url(:original), :size => "80x380" %> </li>
+		          	<% end %>
 		          </ul>
 		        </div>
 		      </section>

@@ -1,39 +1,35 @@
-<h1>Listing banners</h1>
+<div class="breadcrumb">
+    <a href="#">Gerador</a> » <a href="#">Administração</a> » <a href="#">Banners</a>
+</div>
+<form>
+    <p>
+        <input type="button" value="Criar Banner" class="submit" title="Criar novo Settings" onclick="location.href='/admin/banners/new'; return false;">
+    </p>    
 
-<table>
+<h2>Banners</h2>
+    <table width="100%" cellspacing="0" cellpadding="0" class="sortable">
+        <thead>
+            <tr>
+                <th class="header" style="cursor: pointer;">Small</th>
+                <th class="header" style="cursor: pointer;">Nome</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+<% @banners.each do |bn| %>
   <tr>
-    <th>Produto</th>
-    <th>Nome</th>
-    <th>Descricao</th>
-    <th>Url</th>
-    <th>Banner file name</th>
-    <th>Banner content type</th>
-    <th>Banner file size</th>
-    <th>Banner updated at</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <td width="10" ><%= image_tag bn.banner.url(:small), :style => "border:2px solid #999" %></td>
+    <td width="450"><%= bn.nome %></td>
+    <td width="10"><%= link_to image_tag("admin/edit.png"), edit_admin_banner_path(bn) %></td>
+    <td width="10"><%= link_to image_tag("admin/close.png"), [:admin, bn], :method => :delete, :confirm => 'Esta seguro disso?' %></td>
 
-<% @banners.each do |banner| %>
-  <tr>
-    <td><%= banner.produto_id %></td>
-    <td><%= banner.nome %></td>
-    <td><%= banner.descricao %></td>
-    <td><%= banner.url %></td>
-    <td><%= banner.banner_file_name %></td>
-    <td><%= banner.banner_content_type %></td>
-    <td><%= banner.banner_file_size %></td>
-    <td><%= banner.banner_updated_at %></td>
-    <td><%= banner.status %></td>
-    <td><%= link_to 'Show', banner %></td>
-    <td><%= link_to 'Edit', edit_banner_path(banner) %></td>
-    <td><%= link_to 'Destroy', banner, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+        </tbody>
+
 </table>
+</form>
 
-<br />
 
-<%= link_to 'New Banner', new_banner_path %>

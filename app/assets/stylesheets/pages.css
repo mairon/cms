@@ -60,7 +60,7 @@ html {
 .header .menu {
 	display: table;
 	padding-top: 4	px;
-	width: 1120px;	
+	width: 1130px;	
 	font-family: arial, sans-serif;
 	margin-right: auto;
 	margin-left: auto;
@@ -89,7 +89,7 @@ html {
 /*HEADER======*/
 
 .main_resize {
-	width: 920px;
+	width: 940px;
 	margin: 0 auto;
 	padding: 0 10px;
 		display: table;
@@ -282,27 +282,34 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', end
 }
 	
 #home {
-	height:1100px;
+	height:900px;
 	background:green;
 	}
 	
 #quem_somos {
-	height:1000px;
-	background:#777cdc;
+	padding: 10px;
+	height:900px;	
 	}
 	
+#quem_somos .quem_somos {
+	float: right;
+	width: 300px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: justify; text-justify: newspaper
+	}
+
 #projetos_obras {
-	height:1100px;
+	height:900px;
 	background:#9b70c0;
 	}
 
 #tecnologias {
-	height:1100px;
+	height:900px;
 	background: blue;
 	}
 
 #contatos {
-	height:1100px;
+	height:900px;
 	background:#9b70c0;
 	}
 

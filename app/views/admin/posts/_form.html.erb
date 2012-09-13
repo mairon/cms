@@ -1,0 +1,71 @@
+<%= form_for [:admin, @post] do |f| %>
+
+  <br/>
+  <input type="button" value="  Sair  " class="submit" title="Detalhes Principais" onclick="location.href='/admin/posts'; return false;">
+  <%= f.submit :class => "submit", :value => 'Imagens' %>
+
+  <br/>
+  <br/>
+
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |msg| %>
+      <div class="message errormsg"><p><%= msg %></p></div>
+    <% end %>      
+  <% end %>
+
+  <div class="textbox">
+    <h2>Dados do Post</h2>
+    <span class="toggle">-</span>
+    <div class="textbox_content">
+
+      <p>
+          <%= f.label :nome %>:<br />
+          <%= f.text_field :nome, :size => 50, :class=>"text", :placeholder => "Nome para o post" %>
+      </p>
+
+      <p>
+          <%= f.label :cod_video %>:<br />
+          <%= f.text_field :cod_video, :size => 50, :class=>"text", :placeholder => "Codigo do Video Vimeo" %>
+      </p>
+
+      <p>
+          <%= f.label :url_video %>:<br />
+          <%= f.text_field :url_video, :size => 50, :class=>"text", :placeholder => "Url do Video Vimeo" %>
+      </p>
+
+      <p>
+          <%= f.label :descricao %>:<br />
+          <%= f.text_area :descricao, :cols => 80, :rows => 10, :class=>"text", :placeholder => "Descricao do Post" %>
+      </p>
+
+      <div class="field">
+        <%= f.label :publicar %>
+        <br />
+        <%= f.check_box :public %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "submit", :value => 'Imagens' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+
+            $('#post_cod_video').blur(function(){ var cod =  $("input[id=post_cod_video]").val();
+    $.ajax({
+        type:'GET',
+        url: 'http://vimeo.com/api/v2/video/' + cod + '.json',
+        jsonp: 'callback',
+        dataType: 'jsonp',
+        success: function(data){
+            var thumbnail_src = data[0].thumbnail_large;
+    $( '#post_url_video' ).val( thumbnail_src );  
+
+        }
+    });
+}); 
+
+</script>

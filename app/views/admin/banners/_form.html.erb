@@ -1,18 +1,13 @@
 <div class="textbox_content">
 	<div class="textbox">
 		<%= form_for [:admin, @banner], :html => { :multipart => true } do |f| %>
+
 		<% if @banner.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
-			<ul>
-				<% @banner.errors.full_messages.each do |msg| %>
-				<li>
-					<%= msg %>
-				</li>
-				<% end %>
-			</ul>
-		</div>
+			<% @banner.errors.full_messages.each do |msg| %>
+		    	<div class="message errormsg"><p><%= msg %></p></div>
+			<% end %>
 		<% end %>
+
 		<h2>Novo Banner</h2>
 		<div class="textbox_content">
 			<%= f.hidden_field :produto_id %>
