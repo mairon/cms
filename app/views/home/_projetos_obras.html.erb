@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.box").fancybox({
+			'width' : '85%',
+			'height' : '105%',
+			'autoScale' : false,
+			'transitionIn' : 'fade',
+			'transitionOut' : 'fade',
+			'type' : 'iframe'
+		});
+
+	});
+
+</script>
+
+<div class="posts">
+	<ul>
+		<% 10.times do |t|%>
+			<% @posts.each do |p| %>		
+			<a class="box" href="/posts/<%= p.id %>">
+				<li>
+					<%= image_tag p.imagen.url(:medium),:class => "post" %>
+					<br />
+					<%= p.nome %>
+				</li>
+			</a>
+			<% end %>
+		<% end %>
+	</ul>
+	
+</div>

@@ -1,25 +1,76 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Nome:</b>
-  <%= @post.nome %>
-</p>
-
-<p>
-  <b>Descricao:</b>
-  <%= @post.descricao %>
-</p>
-
-<p>
-  <b>Public:</b>
-  <%= @post.public %>
-</p>
-
-<p>
-  <b>Url video:</b>
-  <%= @post.url_video %>
-</p>
+<h1 align="center" class="title"> Detalles de la Obra <%= @post.nome %></h1>
 
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="box">
+        <ul class="clearfix">
+            <li class="active">Tab 1</li>
+            <li>Tab 2</li>
+        </ul>
+        <div class="content">
+            <div id="tab">
+				<div class="graphis">
+					<section class="slider">
+						<div id="slider" class="flexslider">
+						  <ul class="slides">
+
+						  	<% @assets.each do |as|%>
+						        <li>
+							    	<%= image_tag as.imagem.url(:original), :size => "10x380" %> 
+							    </li>
+						  	<% end %>
+						  </ul>
+						</div>
+
+						<div id="carousel" class="flexslider">
+						  <ul class="slides">
+						  	<% @assets.each do |as|%>
+						        <li>
+							    	<%= image_tag as.imagem.url(:original), :size => "10x105" %> 
+							    </li>
+						  	<% end %>
+						  </ul>
+						</div>
+					</section>
+				</div>
+			</div>	
+ 			<div id="tab">
+ 				<iframe src="<%= @post.url_video %>" width="700" height="393" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </div>
+        </div>
+	</div>			
+
+	<div class="description">
+		<% 20.times do |b|%>
+		<%= @post.descricao %>
+		<% end %>
+	</div>
+
+  <!-- FlexSlider -->
+  
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#slider'
+      });
+      
+      $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>

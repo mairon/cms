@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120912230804) do
+ActiveRecord::Schema.define(:version => 20120921085502) do
 
   create_table "assets", :force => true do |t|
     t.string   "imagem_file_name"
@@ -80,13 +80,18 @@ ActiveRecord::Schema.define(:version => 20120912230804) do
   end
 
   create_table "posts", :force => true do |t|
-    t.string   "nome",       :limit => 50
+    t.string   "nome",                :limit => 50
     t.text     "descricao"
     t.integer  "public"
-    t.string   "cod_video",  :limit => 50
-    t.string   "url_video",  :limit => 100
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "cod_video",           :limit => 50
+    t.string   "url_video",           :limit => 100
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.string   "imagen_file_size"
+    t.string   "imagen_updated_at"
+    t.string   "url_video_imagen"
   end
 
   create_table "produtos", :force => true do |t|
@@ -125,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20120912230804) do
 
   create_table "settings", :force => true do |t|
     t.string "nome",            :limit => 50
-    t.string "quem_somos",      :limit => 250
+    t.string "quem_somos",      :limit => 450
     t.string "titulo",          :limit => 120
     t.string "url_twitter",     :limit => 150
     t.string "url_facebook",    :limit => 150

@@ -24,13 +24,24 @@
       </p>
 
       <p>
+          <%= f.label :imagem_titulo %> <br />
+          <span class="custom_file"> <%= f.file_field :imagen %> <span class="note" style="clear:both">* Tamanho 168x75</span> </span>
+          
+          <% if params[:action] == 'edit' %>
+            <%= image_tag @post.imagen.url(:small), :style => "border:2px solid #999" %>
+          <% end %>
+
+      </p>
+
+
+      <p>
           <%= f.label :cod_video %>:<br />
           <%= f.text_field :cod_video, :size => 50, :class=>"text", :placeholder => "Codigo do Video Vimeo" %>
       </p>
 
       <p>
           <%= f.label :url_video %>:<br />
-          <%= f.text_field :url_video, :size => 50, :class=>"text", :placeholder => "Url do Video Vimeo" %>
+          <%= f.text_field :url_video_imagen, :size => 50, :class=>"text", :placeholder => "Url do Video Vimeo" %>
       </p>
 
       <p>
@@ -62,7 +73,7 @@
         dataType: 'jsonp',
         success: function(data){
             var thumbnail_src = data[0].thumbnail_large;
-    $( '#post_url_video' ).val( thumbnail_src );  
+    $( '#post_url_video_imagen' ).val( thumbnail_src );  
 
         }
     });
